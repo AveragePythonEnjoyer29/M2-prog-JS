@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Crypto fuckery</title>
+    </head>
+    <body>
+        <h2>Cryptography magic</h2>
+
+        <button type="button" onClick="makeUUID()">
+            Give me a Unique User ID
+        </button>
+
+        <button type="button" onClick="makeRandomNumbers()">
+            Give me random numbers
+        </button>
+
+        <p id="result">Results: </p>
+
+        <script>
+            class CryptoFuckery
+            {
+                makeRandomNumbers(length)
+                {
+                    const array = new Uint32Array(length);
+                    const randomValues = crypto.getRandomValues(array);
+                    return randomValues
+                };
+
+                makeUUID(length)
+                {
+                    const array = new Uint32Array(length);
+                    const randomUUID = crypto.randomUUID(array)
+                    return randomUUID
+                };
+            }
+
+            const cryptofuckery = new CryptoFuckery();
+
+            makeUUID = () =>
+            {
+                const uuid = cryptofuckery.makeUUID(40);
+
+                const result = document.getElementById("result");
+                result.textContent = uuid
+            };
+
+            makeRandomNumbers = () =>
+            {
+                const values = cryptofuckery.makeRandomNumbers(40);
+
+                const result = document.getElementById("result");
+                result.textContent = values.join(" ")
+            };
+        </script>
+    </body>
+</html>
